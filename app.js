@@ -1,16 +1,11 @@
-//To run: "npm run test"
-
-//importing needed packages
 const prompt = require("prompt-sync")({ sigint: true });
 const termkit = require("terminal-kit").terminal;
 
-//vasiables needed to markup the field and playground
 const hat = "^";
 const hole = "O";
 const fieldCharacter = "░";
 const pathCharacter = "*";
 
-//class that implements this game with all the logic
 class Field {
     constructor(hatAndHoles, field) {
         this.field = field;
@@ -18,7 +13,7 @@ class Field {
         this.previousX = 0;
         this.previousY = 0;
     }
-//print method makes colorful design with the help of terminal-kit package and updates the field ones you make a move
+
      print() {
         for (let row of this.hatAndHoles) {
             let printedRow = row.map((element) => {
@@ -39,7 +34,6 @@ class Field {
         }
     }
 
-//the main logic of the game
     play() {
         let x = 0;
         let y = 0;
@@ -96,7 +90,6 @@ class Field {
         }
     }
 
-//static method that generates field
     static generateField(height, width, holes) {
         let newField = [];
         for (let i = 0; i < height; i++) {
@@ -127,7 +120,6 @@ class Field {
         return newField;
     }
 
-//static method generates blank field
     static generateBlankField(height, width) {
         let newField = [];
 
@@ -150,5 +142,4 @@ const newField = Field.generateField(20, 20, 20);
 
 myField = new Field(newField, blankField);
 
-//inititating game:
 myField.play();
